@@ -14,8 +14,13 @@
     <title>Cakap Room</title>
 
     <style>
+      @font-face {
+        font-family: "Varela";
+        src: url(fonts/Varela_Round/VarelaRound-Regular.ttf) format("truetype");
+      }
+
       * {
-        font-family: "sans-serif";
+        font-family: "Varela";
       }
 
       body {
@@ -53,7 +58,7 @@
 
       .my-card .header .title {
         font-weight: bold;
-        font-size: 2.5rem;
+        font-size: 2rem;
         text-align: center;
       }
 
@@ -69,10 +74,19 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
       }
 
       .my-card > .secondary .banner {
         width: 90%;
+      }
+
+      .my-card > .secondary .title {
+        font-weight: bold;
+        font-size: 2.5rem;
+      }
+
+      .my-card > .secondary .sub-title {
       }
 
       .my-form .form-control {
@@ -148,7 +162,7 @@
         font-weight: bold;
       }
 
-      .info > b{
+      .info > b {
         color: #2a4f96;
       }
     </style>
@@ -158,7 +172,7 @@
       <div class="my-card">
         <div class="primary">
           <div class="header">
-            <div class="title">Join Us</div>
+            <div class="title">Let's Join Us</div>
           </div>
           <div class="content">
             <form class="my-form" action="chat.html">
@@ -191,7 +205,8 @@
                 </div>
               </div>
               <div class="info">
-                By join, your confirm that you accept our <b>Terms of Use</b> and <b>Privacy Policy</b>
+                By join, your confirm that you accept our
+                <b>Terms of Use</b> and <b>Privacy Policy</b>
               </div>
               <button class="my-button" style="margin-top: 2rem">Join</button>
             </form>
@@ -199,6 +214,10 @@
         </div>
         <div class="secondary">
           <img src="images/chat.png" class="banner" />
+          <div class="title">Cakap Room</div>
+          <div class="sub-title">
+            join the room and start chatting with the others
+          </div>
         </div>
       </div>
     </div>
