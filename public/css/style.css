@@ -69,12 +69,9 @@ body {
   padding: 1rem 2rem;
 }
 
-.my-card > .secondary .title {
+.my-card > .secondary > .content > .title {
   font-weight: bold;
   font-size: 2.5rem;
-}
-
-.my-card > .secondary .sub-title {
 }
 
 .my-form .form-control {
