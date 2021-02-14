@@ -146,13 +146,13 @@ body {
   background: #233863;
 }
 
-.info {
+.my-form > .info {
   font-size: 0.8rem;
   color: #b1b1b1;
   line-height: 1.1rem;
   font-weight: bold;
 }
 
-.info > b {
+.my-form > .info > b {
   color: #2a4f96;
 }
