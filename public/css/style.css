@@ -21,6 +21,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .my-card {
@@ -57,16 +58,16 @@ body {
   background: #f0f6ff;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
 }
 
 .my-card > .secondary .banner {
   width: 90%;
+  margin-left: 1.3rem;
 }
 
 .my-card > .secondary > .content {
-  padding: 1rem 2rem;
+  padding: 1rem 3rem;
 }
 
 .my-card > .secondary > .content > .title {
