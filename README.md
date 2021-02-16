@@ -1,5 +1,5 @@
 
-#  DevTover
+# 💬 Cakap Room
 a simple static realtime chat.
 
 ## A Little bit about us
@@ -10,7 +10,7 @@ a simple static realtime chat.
 <!--- ![App UI](https://github.com/faizinkholiq/v_covid/blob/master/v_covid.png?raw=true) --->
 <br />
 
-## Getting started
+## 🏁 Getting started
 1. Clone the repo.
 2. Move to ``cakap_room`` directory
 ```bash
