@@ -1,403 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Cakap Room | JavaScript</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
-    integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-  <link rel="stylesheet" href="css/style.css" />
-  <title>Cakap Room | JavaScript</title>
-  <style>
-    .container>.side {
-      width: 18.5%;
-      background: white;
-      height: 100vh;
-    }
-
-    .container>.main {
-      flex: 1;
-      height: 100vh;
-      background: #f9f9f9;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .container>.main>.header {
-      width: 100%;
-      display: flex;
-    }
-
-    .container>.main>.header .info {
-      flex: 1;
-      padding: 1.5rem 3rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .container>.main>.header .info>.avatar {
-      width: 2.8rem;
-      height: 2.8rem;
-      background: white;
-      margin-right: 1rem;
-      border-radius: 2.5rem;
-      object-fit: cover;
-    }
-
-    .container>.main>.header .info>.title {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    .container>.main>.header>.options {
-      margin-left: auto;
-      display: flex;
-      justify-content: center;
-      align-content: center;
-      align-items: center;
-      margin-right: 1rem;
-    }
-
-    .my-menu-link {
-      font-size: 1.2rem;
-      color: #a0a0a0;
-      padding: 0rem;
-      width: 2.5rem;
-      padding: 0.5rem 0;
-      border-radius: 100%;
-      text-align: center;
-      vertical-align: middle;
-      cursor: pointer;
-      transition: all 0.5s;
-    }
-
-    .my-menu-link:hover {
-      background: #e6e6e6;
-    }
-
-    .avatar {
-      width: 2rem;
-      height: 2rem;
-      border-radius: 100%;
-      object-fit: cover;
-    }
-
-    .container>.main>.content {
-      flex: 1;
-      display: flex;
-      width: 100%;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .my-chat {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      margin: 0 1rem;
-      overflow: auto;
-      padding: 1rem 2rem 2rem;
-    }
-
-    .my-chat::-webkit-scrollbar {
-      width: 7px;
-      cursor: default;
-    }
-
-    .my-chat::-webkit-scrollbar-track {
-      background: #f1f1f1;
-      border-radius: 30px;
-      cursor: default;
-    }
-
-    .my-chat::-webkit-scrollbar-thumb {
-      background: #2a4f96;
-      border-radius: 30px;
-      cursor: default;
-    }
-
-    .my-chat::-webkit-scrollbar-thumb:hover {
-      background: #2a4f96;
-      cursor: default;
-    }
-
-    .my-chat>.list-chat {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-end;
-    }
-
-    .my-chat>.list-chat.my {
-      display: flex;
-      flex-direction: row-reverse;
-      align-items: flex-end;
-    }
-
-    .my-chat>.list-chat:not(:last-child) {
-      margin-bottom: 1rem;
-    }
-
-    .my-chat>.list-chat>.avatar {
-      width: 3rem;
-      background: #d2e6ff;
-      height: 3rem;
-      border-radius: 100%;
-      object-fit: cover;
-    }
-
-    .my-chat>.list-chat>.bubble {
-      margin-left: 0.7rem;
-      margin-right: 0;
-      background: #ffffff;
-      padding: 0.8rem 1rem 1rem;
-      border-radius: 1rem;
-      min-width: 12rem;
-    }
-
-    .my-chat>.list-chat.my>.bubble {
-      margin-right: 0.7rem;
-      margin-left: 0;
-      background: #f0f1f3;
-    }
-
-    .my-chat>.list-chat>.bubble>.info {
-      width: 100%;
-      font-weight: bold;
-      display: flex;
-      align-items: baseline;
-    }
-
-    .my-chat>.list-chat>.bubble>.info>.time {
-      margin-left: auto;
-      font-size: 0.8rem;
-      color: #717171;
-    }
-
-    .my-chat>.list-chat>.bubble>.message {
-      margin-top: 0.3rem;
-    }
-
-    .my-input {
-      width: initial;
-      background: white;
-      margin: 0 2rem 2rem;
-      padding: 0.6rem 0.8rem 0.6rem 2rem;
-      border-radius: 0.6rem;
-      box-shadow: 3px 10px 30px 0px #dadada;
-      display: flex;
-      align-items: flex-end;
-    }
-
-    .my-input .textarea {
-      outline: none;
-      width: 100%;
-      font-size: 1.1rem;
-      min-height: 2rem;
-      max-height: 13vh;
-      overflow: auto;
-      transition: all 0.5s;
-    }
-
-    .my-input .textarea::-webkit-scrollbar {
-      width: 8px;
-      cursor: default;
-    }
-
-    .my-input .textarea::-webkit-scrollbar-track {
-      background: #f1f1f1;
-      border-radius: 30px;
-      cursor: default;
-    }
-
-    .my-input .textarea::-webkit-scrollbar-thumb {
-      background: #888;
-      border-radius: 30px;
-      cursor: default;
-    }
-
-    .my-input .textarea::-webkit-scrollbar-thumb:hover {
-      background: #555;
-      cursor: default;
-    }
-
-    .my-input button {
-      background: #2a4f96;
-      color: white;
-      border-radius: 0.6rem;
-      font-weight: bold;
-      outline: none;
-      border: none;
-      font-size: 1.4rem;
-      cursor: pointer;
-      transition: all 0.5s;
-      width: 3rem;
-      height: 2.8rem;
-      margin-left: 1rem;
-    }
-
-    .my-input button:hover {
-      background: #233863;
-    }
-
-    .dd-menu {
-  position: absolute;
-top: 70%;
-right: 20px;
-z-index: 1000;
-font-size: 14px;
-text-align: left;
-background-color: #fff;
-border: 1px solid #ccc;
-border: 1px solid rgba(0,0,0,0.15);
-border-radius: 4px;
-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
-background-clip: padding-box;
-  -webkit-transition: all 0.2s ease;
-  opacity:0;
-  -webkit-transform-origin: right top 0px; 
-  -webkit-transform: scale(0); 
-}
-.dd-menu ul {
-  min-width: 160px;
-padding: 5px 0;
-margin: 2px 0 0;
-list-style: none;
-  position:relative;
-}
-
-.dd-menu.active {
-  opacity:1;
-  -webkit-transform-origin: right top 0px; 
-  -webkit-transform: scale(1); 
-}
-
-.dd-menu li {
-  color:#666;
-margin: 0;
-padding: 5px 0 5px 15px;
-height: 24px;
-list-style: none;
-  opacity: 0; 
-  transform: translateY(0px);
-}
-.dd-menu li {
-  -webkit-transition: all 0.3s ease;
-  transform: translateY(-30%);
-}
-.dd-menu.active li {
-  opacity: 1; 
-  transform: translateY(0px);
-}
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <div class="side">
-      <div class="content" style="
-            padding: 2rem;
-          ">
-        <div class="title" style="
-                font-size: 1.2rem;
-                display: flex;
-                align-items: center;
-            ">
-          <i class="fa fa-circle" style="
-                margin-right: 0.3rem;
-                font-size: 0.6rem;
-                color: #11d15a;
-              "></i>
-          Online
-        </div>
-        <div class="divider" style="
-              border-bottom: 2px solid #f1f1f1;
-              margin: 0.5rem 0.5rem 1.5rem 0;
-          "></div>
-        <div class="list">
-          <div class="user" style="
-              margin-bottom: 1rem;
-              display: flex;
-              align-items: center;
-            ">
-            <img class="avatar" src="images/user-female.jpg" />
-            <span class="name" style="
-                font-size: 1.2rem;
-                font-weight: bold;
-                margin-left: 0.7rem;
-              ">Faiz</span>
+  <body>
+    <div class="container">
+      <div class="side">
+        <div class="content">
+          <div class="title">
+            <i class="fa fa-circle"></i>
+            Online
           </div>
-          <div class="user" style="
-              margin-bottom: 1rem;
-              display: flex;
-              align-items: center;
-            ">
-            <img class="avatar" src="images/user-male.jpg" />
-            <span class="name" style="
-                font-size: 1.2rem;
-                font-weight: bold;
-                margin-left: 0.7rem;
-              ">Doi</span>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-    <div class="main">
-      <div class="header">
-        <div class="info">
-          <img class="avatar" src="images/default-room.jpg" />
-          <span class="title">JavaScript</span>
-        </div>
-        <div class="options">
-          <span class="my-menu-link">
-            <i class="fa fa-ellipsis-v"></i>
-          </span>
-          <div class="dd-menu">
-            <ul>
-              <li>Profile & status</li>
-               <li>Notification</li>
-               <li>Help</li>
-               <li>Log out</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="content">
-        <div class="my-chat">
-          <div class="list-chat">
-            <image class="avatar" src="images/user-female.jpg" />
-            <div class="bubble">
-              <div class="info">
-                Faiz
-                <span class="time">14:30</span>
-              </div>
-              <div class="message">Hello Boy</div>
-            </div>
-          </div>
-
-          <div class="list-chat my">
-            <image class="avatar" src="images/user-male.jpg" />
-            <div class="bubble">
-              <div class="info">
-                Doi
-                <span class="time">14:31</span>
-              </div>
-              <div class="message">Hello Juga syng</div>
+          <div class="divider"></div>
+          <div class="list" id="users">
+            <div class="user">
+              <img class="avatar" src="images/user-female.jpg" />
+              <span class="name">Faiz</span>
             </div>
           </div>
         </div>
-        <div class="my-input">
-          <span class="textarea" role="textbox" contenteditable></span>
-          <button><i class="fa fa-paper-plane"></i></button>
+      </div>
+      <div class="main">
+        <div class="header">
+          <div class="info">
+            <img class="avatar" src="images/default-room.jpg" />
+            <span class="title" id="room-name"></span>
+          </div>
+          <div class="options">
+            <span class="my-menu-link">
+              <i class="fa fa-ellipsis-v"></i>
+            </span>
+            <div class="dropdown-menu">
+              <ul>
+                <li go="index.html">Leave Room</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="content">
+          <div class="my-chat">
+            <div class="list-chat">
+              <image class="avatar" src="images/user-female.jpg" />
+              <div class="bubble">
+                <div class="info">
+                  Faiz
+                  <span class="time">14:30</span>
+                </div>
+                <div class="message">Hello Boy</div>
+              </div>
+            </div>
+
+            <div class="list-chat my">
+              <image class="avatar" src="images/user-male.jpg" />
+              <div class="bubble">
+                <div class="info">
+                  Doi
+                  <span class="time">14:31</span>
+                </div>
+                <div class="message">Hello Juga syng</div>
+              </div>
+            </div>
+          </div>
+          <div class="my-input">
+            <form id="chat-form">
+              <span
+                id="msg"
+                autocomplete="off"
+                name="message"
+                placeholder="Type a message"
+                class="textarea"
+                role="textbox"
+                contenteditable
+              ></span>
+              <button type="submit"><i class="fa fa-paper-plane"></i></button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="js/main.js"></script>
-</body>
-
+    <script type="text/javascript" src="js/component.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+  </body>
 </html>
