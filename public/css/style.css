@@ -304,7 +304,8 @@ body {
   cursor: default;
 }
 
-.my-chat > .list-chat {
+.my-chat > .list-chat,
+.my-chat > .list-chat.bot {
   display: flex;
   flex-direction: row;
   align-items: flex-end;

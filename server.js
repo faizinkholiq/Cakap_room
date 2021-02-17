@@ -7,7 +7,7 @@ const {
   userJoin,
   getCurrentUser,
   userLeave,
-  getRoomUsers
+  getRoomUser
 } = require("./utils/users");
 
 const app = express();
@@ -22,25 +22,28 @@ const botName = "UrBot";
 // Run when client connects
 io.on("connection", socket => {
   socket.on("joinRoom", ({ username, room }) => {
-    const user = userJoin(socket.io, username, room);
+    const user = userJoin(socket.id, username, room);
 
     socket.join(user.room);
 
     // Welcome current user
-    socket.emit("message", formatMessage(botName, "Welcome to the family"));
+    socket.emit(
+      "message",
+      formatMessage(botName, "Welcome to the family", true)
+    );
 
     // Broadcast when a user connect
     socket.broadcast
       .to(user.room)
       .emit(
         "message",
-        formatMessage(botName, `${user.username} has joined the chat`)
+        formatMessage(botName, `${user.username} has joined the chat`, true)
       );
 
     // Send users & room info
     io.to(user.room).emit("roomUsers", {
       room: user.room,
-      users: getRoomUsers(user.room)
+      users: getRoomUser(user.room)
     });
   });
 
@@ -48,7 +51,10 @@ io.on("connection", socket => {
   socket.on("chatMessage", msg => {
     const user = getCurrentUser(socket.id);
 
-    io.to(user.room).emit("message", formatMessage(user.username, msg));
+    io.to(user.room).emit(
+      "message",
+      formatMessage(user.username, msg.text, msg.bot)
+    );
   });
 
   // Runs when client disconnects
@@ -58,13 +64,13 @@ io.on("connection", socket => {
     if (user) {
       io.to(user.room).emit(
         "message",
-        formatMessage(botName, `${user.username} has left the chat`)
+        formatMessage(botName, `${user.username} has left the chat`, true)
       );
 
       // Send users & room info
       io.to(user.room).emit("roomUsers", {
         room: user.room,
-        users: getRoomUsers(user.room)
+        users: getRoomUser(user.room)
       });
     }
   });
