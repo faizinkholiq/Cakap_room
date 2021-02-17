@@ -51,13 +51,15 @@ chatForm.addEventListener("submit", e => {
 // Output message
 function outputMessage(message) {
   const div = document.createElement("div");
+  let ava = "user-male.jpg";
   if (message.bot) {
+    ava = "my-bot.jpg";
     div.classList.add("list-chat", "bot");
   } else {
     div.classList.add("list-chat", "my");
   }
   div.innerHTML = `
-    <img class="avatar" src="images/user-male.jpg" />
+    <img class="avatar" src="images/${ava}" />
     <div class="bubble">
       <div class="info">
         ${message.username}
@@ -83,7 +85,7 @@ function outputUsers(users) {
     const div = document.createElement("div");
     div.classList.add("user");
     div.innerHTML = `
-      <img class="avatar" src="images/user-female.jpg" />
+      <img class="avatar" src="images/user-male.jpg" />
       <span class="name">${user.username}</span>
     `;
 

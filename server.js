@@ -37,7 +37,7 @@ io.on("connection", socket => {
       .to(user.room)
       .emit(
         "message",
-        formatMessage(botName, `${user.username} has joined the chat`, true)
+        formatMessage(botName, `${user.username} join the chat`, true)
       );
 
     // Send users & room info
@@ -64,7 +64,7 @@ io.on("connection", socket => {
     if (user) {
       io.to(user.room).emit(
         "message",
-        formatMessage(botName, `${user.username} has left the chat`, true)
+        formatMessage(botName, `${user.username} left the chat`, true)
       );
 
       // Send users & room info

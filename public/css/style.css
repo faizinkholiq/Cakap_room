@@ -337,15 +337,19 @@ body {
   border-radius: 1rem;
   min-width: 12rem;
 }
-
 .my-chat > .list-chat.my > .bubble {
   margin-right: 0.7rem;
   margin-left: 0;
   background: #dcdcde;
 }
 
+.my-chat > .list-chat.bot > .bubble {
+  background: #b1c3e6;
+}
+
 .my-chat > .list-chat > .bubble > .info {
   width: 100%;
+  font-size: 0.9rem;
   font-weight: bold;
   display: flex;
   align-items: baseline;
@@ -358,7 +362,7 @@ body {
 }
 
 .my-chat > .list-chat > .bubble > .message {
-  margin-top: 0.3rem;
+  margin-top: 0.7rem;
 }
 
 .my-input {
