@@ -6,8 +6,11 @@ a simple static realtime chat.
 ### 🛠️ Built with :
 - [ExpressJs](https://expressjs.com/)
 - [Socket.io](https://socket.io)
-### ️🌃 Screenshots: -
-<!--- ![App UI](https://github.com/faizinkholiq/v_covid/blob/master/v_covid.png?raw=true) --->
+### ️🌃 Screenshots:
+#### 1. Login Page
+ ![Login UI](https://github.com/faizinkholiq/Cakap_room/blob/master/raw/login.png?raw=true)
+#### 2. Chat Page
+ ![Chat UI](https://github.com/faizinkholiq/Cakap_room/blob/master/raw/chat.png?raw=true)
 <br />
 
 ## 🏁 Getting started
