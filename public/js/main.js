@@ -56,7 +56,11 @@ function outputMessage(message) {
     ava = "my-bot.jpg";
     div.classList.add("list-chat", "bot");
   } else {
-    div.classList.add("list-chat", "my");
+    if (username != message.username) {
+      div.classList.add("list-chat");
+    } else {
+      div.classList.add("list-chat", "my");
+    }
   }
   div.innerHTML = `
     <img class="avatar" src="images/${ava}" />
